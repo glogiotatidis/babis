@@ -42,7 +42,7 @@ setup(
     zip_safe=False,
     keywords='babis',
     classifiers=[
-        'Development Status :: 2 - Pre-Alpha',
+        'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: GNU General Public License',
         'Natural Language :: English',
