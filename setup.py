@@ -10,17 +10,23 @@ with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
 requirements = [
-    # TODO: put package requirements here
+    'six>=1.10'
 ]
 
 test_requirements = [
-    # TODO: put package test requirements here
+    'mock',
+    'pytest',
 ]
+
+setup_requirements = [
+    'pytest-runner'
+]
+
 
 setup(
     name='babis',
     version='0.1.0',
-    description="Simple decorator to ping a URL before and after executing the wrapped obj.",
+    description="Decorator that pings URLs before and after executing the wrapped obj.",
     long_description=readme + '\n\n' + history,
     author="Giorgos Logiotatidis",
     author_email='seadog@sealabs.net',
@@ -48,6 +54,6 @@ setup(
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
     ],
-    test_suite='tests',
-    tests_require=test_requirements
+    tests_require=test_requirements,
+    setup_requires=setup_requirements,
 )
