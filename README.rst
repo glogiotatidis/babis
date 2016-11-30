@@ -14,10 +14,9 @@ babis
      :alt: Updates
 
 
-Decorator that pings URLs before and after executing the wrapped obj.
-
-
-* Free software: GNU General Public License v3
+Decorator that pings URLs before and after executing the wrapped obj. Useful to
+monitor cron jobs with services like `Dead Man's Snitch`_ or
+`HealthChecks.io`_.
 
 Features
 --------
@@ -25,12 +24,12 @@ Features
 * Pre and After run pings
 * Custom user agent
 * Silent failures
+* Rate limiting
 
 Usage
 -----
 
-Ping after successful execution. Useful to monitor cron jobs with services like
-`Dead Man's Snitch`_ or `HealthChecks.io`_::
+Ping after successful execution::
 
    @babis.decorator(ping_after='http://healthchecks.io/XXX')
    def cron_job():
@@ -54,10 +53,26 @@ And if you don't care if the ping fails, silence the errors::
    def cron_job_silent_failure():
      pass
 
+You can also rate limit the number of pings send to play nice with third party
+services, let's say to at most 1 call in 5 minutes::
+
+   @babis.decorator(ping_after='http://healthchecks.io/XXX', rate='1/5m')
+   def cron_job_rate_limited():
+     pass
+
+
+or at most 24 calls per day::
+
+   @babis.decorator(ping_after='http://healthchecks.io/XXX', rate='24/1d')
+   def cron_job_rate_limited():
+     pass
+
+Note that if you defined both `ping_after` and `ping_before` URLs then each call
+counts for two hits by the rate limiter.
 
 
 Credits
----------
+-------
 
 This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
 
