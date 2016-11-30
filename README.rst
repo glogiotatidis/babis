@@ -30,6 +30,7 @@ Features
 * Pre and After run pings
 * Custom user agent
 * Silent failures
+* Rate limiting
 
 Usage
 -----
@@ -59,6 +60,19 @@ And if you don't care if the ping fails, silence the errors::
    def cron_job_silent_failure():
      pass
 
+You can also rate limit the number of pings send to play nice with third party
+services, let's say to at most 1 call in 5 minutes::
+
+   @babis.decorator(ping_after='http://healthchecks.io/XXX', rate='1/5m')
+   def cron_job_silent_failure():
+     pass
+
+
+or 24 calls per day::
+
+   @babis.decorator(ping_after='http://healthchecks.io/XXX', rate='24/1d')
+   def cron_job_silent_failure():
+     pass
 
 
 Credits
