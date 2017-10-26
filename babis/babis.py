@@ -52,6 +52,8 @@ class decorator(object):
             fn(*args, **kwargs)
             if self.ping_after and not self.is_ratelimited():
                 self.ping_urls(self.ping_after)
+        if hasattr(fn, '__name__'):
+            wrapped.__name__ = fn.__name__
         return wrapped
 
     def is_ratelimited(self):

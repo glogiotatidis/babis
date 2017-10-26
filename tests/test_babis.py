@@ -140,3 +140,10 @@ class TestBabis(object):
         wrapped()
 
         assert(dec.ping_urls.call_count == 2)
+
+    def test_fn_name(self):
+        dec = decorator()
+        fn = Mock()
+        fn.__name__ = 'foobar'
+        wrapped = dec(fn)
+        assert(wrapped.__name__ == 'foobar')
