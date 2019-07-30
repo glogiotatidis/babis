@@ -25,7 +25,7 @@ class decorator(object):
         self.user_agent = user_agent
         if rate:
             self.calls = []
-            match = re.match('([\d]+)(?:/(\d)?([smhd]))?$', rate)
+            match = re.match(r'([\d]+)(?:/(\d)?([smhd]))?$', rate)
             if match:
                 self.ratelimit_count, multi, ratelimit_period = match.groups()
             else:
