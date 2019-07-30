@@ -9,11 +9,6 @@ babis
 .. image:: https://img.shields.io/travis/glogiotatidis/babis.svg
         :target: https://travis-ci.org/glogiotatidis/babis
 
-.. image:: https://pyup.io/repos/github/glogiotatidis/babis/shield.svg
-     :target: https://pyup.io/repos/github/glogiotatidis/babis/
-     :alt: Updates
-
-
 Decorator that pings URLs before and after executing the wrapped obj. Useful to
 monitor cron jobs with services like `Dead Man's Snitch`_ or
 `HealthChecks.io`_.
