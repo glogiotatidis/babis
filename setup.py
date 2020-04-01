@@ -25,7 +25,7 @@ setup_requirements = [
 
 setup(
     name='babis',
-    version='0.2.2',
+    version='0.2.3',
     description="Decorator that pings URLs before and after executing the wrapped obj.",
     long_description=readme + '\n\n' + history,
     author="Giorgos Logiotatidis",
